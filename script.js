@@ -27,8 +27,9 @@ const getEncriptado = () =>{
     let inputValue = document.getElementsByClassName("text-input")[0].value;
     if(inputValue != ""){ 
         if(inputValue != " "){
-            document.getElementById("texto2").innerHTML = encriptarMensaje(inputValue); 
+            document.getElementById("respuesta").innerHTML = encriptarMensaje(inputValue); 
             ocultarElementos();
+            borrarInput();
         }
 
     }
@@ -37,33 +38,38 @@ const getDesencriptado = () =>{
     let inputValue = document.getElementsByClassName("text-input")[0].value;
     if(inputValue != ""){
         if(inputValue != " "){ 
-            document.getElementById("texto2").innerHTML = desencriptarMensaje(inputValue); 
+            document.getElementById("respuesta").innerHTML = desencriptarMensaje(inputValue); 
             ocultarElementos();
+            borrarInput();
         }
     }
 }
 
 const copiarTexto = () => {
-    var textarea = document.getElementById("texto2");
+    var textarea = document.getElementById("respuesta");
     
     textarea.select();
     document.execCommand('copy');
-    document.getElementsByClassName("text-input")[0].value = "";
-    document.execCommand('paste')
-    mostrarElementos();
+    borrarInput();
 
   }
 
   function ocultarElementos(){
     
-    document.getElementById("imgDer").style.display = 'none';//ocultar una imagen para un elemento se usa visibiliity hidden
-    document.getElementById("texto").style.display= 'none';
-    document.getElementById("texto2").style.height = '80%';
-    document.getElementById("btn-copiar").style.display= 'inline';
+    document.getElementById("munieco").style.display = 'none';//ocultar una imagen para un elemento se usa visibiliity hidden
+    document.getElementById("information").style.display= 'none';
+    document.getElementById("respuesta").style.display= 'inline';
+    document.getElementById("btn-copiar").style.display= 'flex';
   }
   function mostrarElementos(){
     
-    document.getElementById("imgDer").style.display = 'inline';//ocultar una imagen para un elemento se usa visibiliity hidden
-    document.getElementById("texto2").style.height = '20%';
-    document.getElementById("btn-copiar").style.display= 'block';
+    document.getElementById("munieco").style.display = 'inline';//ocultar una imagen para un elemento se usa visibiliity hidden
+    document.getElementById("information").style.display= 'flex';
+    document.getElementById("btn-copiar").style.display= 'none';
+    document.getElementById("respuesta").style.display= 'none';
+
+  }
+  function borrarInput(){
+    document.getElementsByClassName("text-input")[0].value = "";
+    document.getElementsByClassName("text-input")[0].focus();
   }
